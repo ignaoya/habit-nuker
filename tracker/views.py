@@ -9,7 +9,14 @@ class HabitListAPIView(generics.ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
 
+
 class HabitRetrieveAPIView(generics.RetrieveAPIView):
     lookup_field = "id"
     queryset = Habit.objects.all()
     serializer_class = HabitDetailSerializer
+    
+
+class HabitCreateAPIView(generics.CreateAPIView):
+    queryset = Habit.objects.all()
+    serializer_class = HabitDetailSerializer
+
