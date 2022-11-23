@@ -11,3 +11,17 @@ class HabitSerializer(serializers.ModelSerializer):
             "category",
             "measure_of_completion",
         ]
+
+class HabitDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Habit
+        fields = [
+            'id',
+            'name',
+            'user',
+            'category',
+            'goal_description',
+            'quantitative_goal',
+            'quantitative_goal_units',
+            'measure_of_completion',
+        ]
