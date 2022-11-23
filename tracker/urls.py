@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.HabitListAPIView.as_view(), name='habit_list'),
+    path('<int:id>/', views.HabitRetrieveAPIView.as_view(), name='habit_detail'),
     ]
