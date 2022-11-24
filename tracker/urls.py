@@ -6,4 +6,5 @@ urlpatterns = [
     path('<int:id>/', views.HabitRetrieveAPIView.as_view(), name='habit_detail'),
     path('create/', views.HabitCreateAPIView.as_view(), name='habit_create'),
     path('update/<int:id>/', views.HabitRetrieveUpdateAPIView.as_view(), name='habit_update'),
+    path('delete/<int:id>', views.HabitDeleteAPIView.as_view(), name='habit_delete'),
     ]
