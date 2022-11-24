@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 
 class NukeUser(AbstractUser):
@@ -31,8 +30,8 @@ class Habit(models.Model):
 
 class Streak(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE, related_name='streaks')
-    start_date = models.DateTimeField(default=timezone.now())
-    end_date = models.DateTimeField(default=timezone.now())
+    start_date = models.DateTimeField(default=datetime.now)
+    end_date = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return f"{self.end_date - self.start_date + timedelta(hours=24)}"
