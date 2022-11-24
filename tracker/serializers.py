@@ -10,6 +10,7 @@ class HabitSerializer(serializers.ModelSerializer):
             "name",
             "category",
             "measure_of_completion",
+            "streaks",
         ]
 
 class HabitDetailSerializer(serializers.ModelSerializer):
