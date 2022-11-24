@@ -25,3 +25,7 @@ class HabitRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     lookup_field = "id"
     queryset = Habit.objects.all()
     serializer_class = HabitDetailSerializer
+
+class HabitDeleteAPIView(generics.DestroyAPIView):
+    lookup_field = "id"
+    queryset = Habit.objects.all()
