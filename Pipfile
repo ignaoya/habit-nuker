@@ -6,9 +6,6 @@ name = "pypi"
 [packages]
 django = "*"
 django-rest-framework = "*"
-authlib = "*"
-python-dotenv = "*"
-requests = "*"
 
 [dev-packages]
 
