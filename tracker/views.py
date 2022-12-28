@@ -4,7 +4,6 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from rest_framework import generics
-from urllib.parse import quote_plus, urlencode
 
 from .serializers import HabitSerializer, HabitDetailSerializer
 from .models import Habit
