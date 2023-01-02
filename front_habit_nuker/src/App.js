@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+import logo from './logo_messi.png';
+import HabitList from './habits/habitlist';
 import './App.css';
+
 
 function App() {
   return (
@@ -7,16 +9,17 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          If the <code>Champion</code> is spinning, you are a
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="http://localhost:8000"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Habit Nuker
         </a>
+        <HabitList/>
       </header>
     </div>
   );
