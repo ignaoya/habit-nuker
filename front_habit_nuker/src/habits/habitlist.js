@@ -19,9 +19,9 @@ class HabitList extends Component {
     }
     render(){
         return(
-            <div>
+            <div >
                 {this.state.habitsData.map( item => {
-                    return <HabitDetail habit = {item}/>
+                    return <HabitDetail key={item.id} habit = {item}/>
                     })
                 }
             </div>
