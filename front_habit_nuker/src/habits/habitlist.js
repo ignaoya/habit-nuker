@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HabitDetail from './habitdetail';
+import HabitForm from './habitform';
 import axios from 'axios';
 
 class HabitList extends Component {
@@ -45,6 +46,7 @@ class HabitList extends Component {
     render(){
         return(
             <div>
+                <HabitForm/>
                 {this.state.habitsData.map( item => {
                     return (
                       <h3
