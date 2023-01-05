@@ -8,10 +8,15 @@ class HabitDetail extends Component {
       showComponent: false,
     };
     this.updateHabitDetails = this.updateHabitDetails.bind(this);
+    this.hideComponent = this.hideComponent.bind(this);
   }
 
   updateHabitDetails() {
     this.setState({ showComponent: true });
+  }
+
+  hideComponent() {
+    this.setState({ showComponent: false });
   }
 
     render(){
@@ -27,7 +32,7 @@ class HabitDetail extends Component {
                 >
                   Update
                 </button>
-                {this.state.showComponent ? <HabitUpdate habitUpdate={habit} /> : null}
+                {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.hideComponent} /> : null}
             </div>
         );
      }
