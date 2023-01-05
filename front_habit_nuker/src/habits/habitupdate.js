@@ -35,6 +35,7 @@ class HabitUpdate extends Component {
       .catch(function (error) {
         console.log(error);
       });
+    this.props.afterSubmit();
   }
 
   render() {
