@@ -6,7 +6,10 @@ class HabitUpdate extends Component {
     super(props);
     this.state = {
       habit_to_update: this.props.habitUpdate,
-      value: this.props.habitUpdate.goal_description,
+      goal_description_value: this.props.habitUpdate.goal_description,
+      quantitative_goal_value: this.props.habitUpdate.quantitative_goal,
+      quantitative_goal_units_value: this.props.habitUpdate.quantitative_goal_units,
+      measure_of_completion_value: this.props.habitUpdate.measure_of_completion,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -14,14 +17,17 @@ class HabitUpdate extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({[event.target.name]:event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     axios
       .patch("http://127.0.0.1:8000".concat(this.state.habit_to_update.update), {
-        goal_description: this.state.value,
+        goal_description: this.state.goal_description_value,
+        quantitative_goal: this.state.quantitative_goal_value,
+        quantitative_goal_units: this.state.quantitative_goal_units_value,
+        measure_of_completion: this.state.measure_of_completion_value,
       })
       .then((response) => {
         console.log(response);
@@ -32,13 +38,49 @@ class HabitUpdate extends Component {
   }
 
   render() {
-    const { value } = this.state;
+    const { 
+      goal_description_value,
+      quantitative_goal_value,
+      quantitative_goal_units_value,
+      measure_of_completion_value
+    } = this.state;
     return (
       <div style={{ color: "red", border: "1px solid red" }}>
         <form onSubmit={this.handleSubmit}>
           <div>
             <h6>Updating</h6>
-            <input type="text" value={value} onChange={this.handleChange} />
+            <div>
+            Goal Description
+            <input 
+              type="text" 
+              name="goal_description_value" 
+              value={goal_description_value} 
+              onChange={this.handleChange} />
+            </div>
+            <div>
+            Quantitative Goal
+            <input 
+              type="number" 
+              name="quantitative_goal_value" 
+              value={quantitative_goal_value} 
+              onChange={this.handleChange} />
+            </div>
+            <div>
+            Quantitative Goal Units
+            <input 
+              type="text" 
+              name="quantitative_goal_units_value" 
+              value={quantitative_goal_units_value} 
+              onChange={this.handleChange} />
+            </div>
+            <div>
+            Measure of Completion
+            <input 
+              type="number" 
+              name="measure_of_completion_value" 
+              value={measure_of_completion_value} 
+              onChange={this.handleChange} />
+            </div>
           </div>
           <input
             style={{ backgroundColor: "white" }}
