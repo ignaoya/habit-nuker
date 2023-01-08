@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import HabitUpdate from './habitupdate';
 
 class HabitDetail extends Component {
@@ -9,6 +10,7 @@ class HabitDetail extends Component {
     };
     this.updateHabitDetails = this.updateHabitDetails.bind(this);
     this.hideComponent = this.hideComponent.bind(this);
+    this.deleteHabit = this.deleteHabit.bind(this);
   }
 
   updateHabitDetails() {
@@ -17,6 +19,17 @@ class HabitDetail extends Component {
 
   hideComponent() {
     this.setState({ showComponent: false });
+  }
+
+  deleteHabit(habit) {
+    console.log(habit);
+    axios.delete("http://127.0.0.1:8000".concat(habit))
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
     render(){
@@ -31,6 +44,12 @@ class HabitDetail extends Component {
                   onClick={() => this.updateHabitDetails()}
                 >
                   Update
+                </button>
+                <button
+                  style={{ backgroundColor: "white" }}
+                  onClick={() => this.deleteHabit(habit.delete)}
+                >
+                  Delete
                 </button>
                 {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.hideComponent} /> : null}
             </div>
