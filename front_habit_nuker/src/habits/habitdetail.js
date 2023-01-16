@@ -35,18 +35,16 @@ class HabitDetail extends Component {
     render(){
         const habit = this.props.habitDetail;
         return(
-            <div style={{ color: "yellow", border: "1px solid yellow" }}>
+            <div class="update">
                 <h4>Habit N. {habit.id}</h4>
                 <h4>{habit.name}</h4>
                 <h4>Habit Goal is {habit.measure_of_completion}</h4>
                 <button
-                  style={{ backgroundColor: "white" }}
                   onClick={() => this.updateHabitDetails()}
                 >
                   Update
                 </button>
                 <button
-                  style={{ backgroundColor: "white" }}
                   onClick={() => this.deleteHabit(habit.delete)}
                 >
                   Delete
