@@ -46,7 +46,7 @@ class HabitUpdate extends Component {
       measure_of_completion_value
     } = this.state;
     return (
-      <div style={{ color: "red", border: "1px solid red" }}>
+      <div>
         <form onSubmit={this.handleSubmit}>
           <div>
             <h6>Updating</h6>
@@ -84,7 +84,6 @@ class HabitUpdate extends Component {
             </div>
           </div>
           <input
-            style={{ backgroundColor: "white" }}
             type="submit"
             value="Submit"
           />
