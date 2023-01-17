@@ -22,10 +22,13 @@ class HabitDetail extends Component {
   }
 
   deleteHabit(habit) {
-    console.log(habit);
-    axios.delete("http://127.0.0.1:8000".concat(habit))
+    console.log(habit.delete);
+    axios.delete("http://127.0.0.1:8000".concat(habit.delete))
       .then((response) => {
         console.log(response);
+        if (response.status == 204) {
+          this.props.afterDelete(habit.id);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -45,7 +48,7 @@ class HabitDetail extends Component {
                   Update
                 </button>
                 <button
-                  onClick={() => this.deleteHabit(habit.delete)}
+                  onClick={() => this.deleteHabit(habit)}
                 >
                   Delete
                 </button>
