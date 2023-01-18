@@ -26,7 +26,7 @@ class HabitDetail extends Component {
     axios.delete("http://127.0.0.1:8000".concat(habit.delete))
       .then((response) => {
         console.log(response);
-        if (response.status == 204) {
+        if (response.status === 204) {
           this.props.afterDelete(habit.id);
         }
       })

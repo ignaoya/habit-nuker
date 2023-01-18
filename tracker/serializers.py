@@ -23,6 +23,7 @@ class HabitSerializer(serializers.ModelSerializer):
 class HabitDetailSerializer(serializers.ModelSerializer):
     update = serializers.SerializerMethodField()
     delete = serializers.SerializerMethodField()
+    absolute_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Habit
@@ -37,6 +38,7 @@ class HabitDetailSerializer(serializers.ModelSerializer):
             'measure_of_completion',
             'update',
             'delete',
+            'absolute_url',
         ]
 
     def get_update(self, obj):
@@ -44,3 +46,6 @@ class HabitDetailSerializer(serializers.ModelSerializer):
 
     def get_delete(self, obj):
         return reverse('habit_delete', args=(obj.pk,))
+
+    def get_absolute_url(self, obj):
+        return reverse('habit_detail', args=(obj.pk,))

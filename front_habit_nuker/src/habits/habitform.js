@@ -5,9 +5,9 @@ class HabitForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      habit_name: " ",
-      description: " ",
-      user: " ",
+      habit_name: "",
+      description: "",
+      user: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +28,12 @@ class HabitForm extends Component {
       })
       .then((response) =>{
         console.log(response);
+        if (response.status === 201) {
+          this.setState({ habit_name: "",
+                          description: "",
+                          user: ""});
+          this.props.afterSubmit(response.data);
+        }
       })
       .catch(function (error) {
         console.log(error);

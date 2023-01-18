@@ -15,6 +15,7 @@ class HabitList extends Component {
       this.getHabitDetail = this.getHabitDetail.bind(this);
       this.showHabitDetails = this.showHabitDetails.bind(this);
       this.deleteHabitFromList = this.deleteHabitFromList.bind(this);
+      this.updateListWithNewHabit = this.updateListWithNewHabit.bind(this);
     }
 
     getHabitDetail(item) {
@@ -31,6 +32,12 @@ class HabitList extends Component {
     showHabitDetails(item){
       this.getHabitDetail(item);
       this.setState({ showComponent: true });
+    }
+    
+    updateListWithNewHabit(item) {
+      let newList = this.state.habitsData;
+      newList.push(item);
+      this.setState({ habitsData: newList });
     }
 
     deleteHabitFromList(habit_id){
@@ -54,7 +61,8 @@ class HabitList extends Component {
     render(){
         return(
             <div>
-                <HabitForm/>
+                <HabitForm
+                  afterSubmit={this.updateListWithNewHabit} />
                 {this.state.habitsData.map( item => {
                     return (
                       <h3
