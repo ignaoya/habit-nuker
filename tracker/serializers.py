@@ -4,23 +4,6 @@ from rest_framework.reverse import reverse
 
 
 class HabitSerializer(serializers.ModelSerializer):
-    absolute_url = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Habit
-        fields = [
-            "id",
-            "name",
-            "category",
-            "measure_of_completion",
-            "streaks",
-            "absolute_url",
-        ]
-
-    def get_absolute_url(self, obj):
-        return reverse('habit_detail', args=(obj.pk,))
-
-class HabitDetailSerializer(serializers.ModelSerializer):
     update = serializers.SerializerMethodField()
     delete = serializers.SerializerMethodField()
     absolute_url = serializers.SerializerMethodField()
@@ -36,6 +19,7 @@ class HabitDetailSerializer(serializers.ModelSerializer):
             'quantitative_goal',
             'quantitative_goal_units',
             'measure_of_completion',
+            'streaks',
             'update',
             'delete',
             'absolute_url',
@@ -49,3 +33,4 @@ class HabitDetailSerializer(serializers.ModelSerializer):
 
     def get_absolute_url(self, obj):
         return reverse('habit_detail', args=(obj.pk,))
+    
