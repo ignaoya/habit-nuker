@@ -8,17 +8,23 @@ class HabitDetail extends Component {
     this.state = {
       showComponent: false,
     };
-    this.updateHabitDetails = this.updateHabitDetails.bind(this);
-    this.hideComponent = this.hideComponent.bind(this);
+    this.showHabitUpdateForm = this.showHabitUpdateForm.bind(this);
+    this.hideHabitUpdateForm = this.hideHabitUpdateForm.bind(this);
+    this.afterHabitUpdate = this.afterHabitUpdate.bind(this);
     this.deleteHabit = this.deleteHabit.bind(this);
   }
 
-  updateHabitDetails() {
+  showHabitUpdateForm() {
     this.setState({ showComponent: true });
   }
-
-  hideComponent() {
+  
+  hideHabitUpdateForm() {
     this.setState({ showComponent: false });
+  }
+
+  afterHabitUpdate(habit) {
+    this.hideHabitUpdateForm();
+    this.props.afterUpdate(habit);
   }
 
   deleteHabit(habit) {
@@ -43,7 +49,7 @@ class HabitDetail extends Component {
                 <h4>{habit.name}</h4>
                 <h4>Habit Goal is {habit.measure_of_completion}</h4>
                 <button
-                  onClick={() => this.updateHabitDetails()}
+                  onClick={() => this.showHabitUpdateForm()}
                 >
                   Update
                 </button>
@@ -52,7 +58,7 @@ class HabitDetail extends Component {
                 >
                   Delete
                 </button>
-                {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.hideComponent} /> : null}
+                {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.afterHabitUpdate} /> : null}
             </div>
         );
      }

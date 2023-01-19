@@ -31,11 +31,13 @@ class HabitUpdate extends Component {
       })
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          this.props.afterSubmit(response.data);
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
-    this.props.afterSubmit();
   }
 
   render() {
