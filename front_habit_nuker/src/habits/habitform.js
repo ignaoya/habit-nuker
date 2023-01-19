@@ -24,7 +24,8 @@ class HabitForm extends Component {
       .post("http://127.0.0.1:8000/create/", {
         name: this.state.habit_name,
         goal_description: this.state.description,
-        user: this.state.user
+        user: this.state.user,
+        streaks: [],
       })
       .then((response) =>{
         console.log(response);
