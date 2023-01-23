@@ -41,27 +41,33 @@ class HabitDetail extends Component {
       });
   }
 
-    render(){
-        const habit = this.props.habitDetail;
-        return(
-            <div class="update">
-                <h4>Habit N. {habit.id}</h4>
-                <h4>{habit.name}</h4>
-                <h4>Habit Goal is {habit.measure_of_completion}</h4>
-                <button
-                  onClick={() => this.showHabitUpdateForm()}
-                >
-                  Update
-                </button>
-                <button
-                  onClick={() => this.deleteHabit(habit)}
-                >
-                  Delete
-                </button>
-                {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.afterHabitUpdate} /> : null}
-            </div>
-        );
-     }
+  componentDidUpdate(prevProps) {
+    if (this.props.habitDetail !== prevProps.habitDetail) {
+      this.setState({ showComponent: false });
+    }
+  }
+
+  render(){
+      const habit = this.props.habitDetail;
+      return(
+          <div class="update">
+              <h4>Habit N. {habit.id}</h4>
+              <h4>{habit.name}</h4>
+              <h4>Habit Goal is {habit.measure_of_completion}</h4>
+              <button
+                onClick={() => this.showHabitUpdateForm()}
+              >
+                Update
+              </button>
+              <button
+                onClick={() => this.deleteHabit(habit)}
+              >
+                Delete
+              </button>
+              {this.state.showComponent ? <HabitUpdate habitUpdate={habit} afterSubmit={this.afterHabitUpdate} /> : null}
+          </div>
+      );
+   }
 }
 
 export default HabitDetail;
