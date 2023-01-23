@@ -74,22 +74,26 @@ class HabitList extends Component {
                   afterSubmit={this.updateListWithNewHabit} />
                 {this.state.habitsData.map( item => {
                     return (
-                      <h3
-                        key={item.id} 
-                        onClick={() => this.showHabitDetails(item)} 
-                      >
-                        {item.name}, {item.measure_of_completion} 
-                      </h3>
+                      <div key={item.id}>
+                        <h3
+                           
+                          onClick={() => this.showHabitDetails(item)} 
+                        >
+                          {item.name}, {item.measure_of_completion} 
+                        </h3>
+                        {this.state.showComponent && item.id === this.state.habit.id ? (
+                          <HabitDetail 
+                            habitDetail={this.state.habit} 
+                            afterDelete={this.deleteHabitFromList}
+                            afterUpdate={this.updateListWithUpdatedHabit} />
+                        ) 
+                        : null}
+                      </div>
                     );
                   })
                 }
 
-                {this.state.showComponent ? (
-                  <HabitDetail 
-                    habitDetail={this.state.habit} 
-                    afterDelete={this.deleteHabitFromList}
-                    afterUpdate={this.updateListWithUpdatedHabit} />
-                ) : null}
+                
             </div>
         );
     }
