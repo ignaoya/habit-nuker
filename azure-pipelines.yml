@@ -10,10 +10,6 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python38:
-      PYTHON_VERSION: '3.8'
-    Python39:
-      PYTHON_VERSION: '3.9'
     Python310:
       PYTHON_VERSION: '3.10'
   maxParallel: 3
@@ -57,3 +53,12 @@ steps:
     testResultsFiles: "**/TEST-*.xml"
     testRunTitle: 'Python $(PYTHON_VERSION)'
   condition: succeededOrFailed()
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(44ca54b6-ec71-4366-a0e2-63e08d0b10d6)'
+    appType: 'webAppLinux'
+    appName: 'habit_nuker'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'PYTHON|3.10'
+    startUpCommand: 'python -m pipenv run python manage.py runserver'
