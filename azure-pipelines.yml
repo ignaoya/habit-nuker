@@ -42,14 +42,14 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip setuptools wheel
-    pip install pipenv
-    pipenv install
-    pipenv install unittest-xml-reporting
+    python -m pip install pipenv
+    python -m pipenv install
+    python -m pipenv install unittest-xml-reporting
   displayName: 'Install prerequisites'
 
 - script: |
     pushd '$(projectRoot)'
-    pipenv shell
+    python -m pipenv shell
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
   displayName: 'Run tests'
 
