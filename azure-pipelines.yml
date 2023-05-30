@@ -85,3 +85,6 @@ stages:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+          - task: CmdLine@2
+            inputs:
+              script: 'python manage.py runserver'
