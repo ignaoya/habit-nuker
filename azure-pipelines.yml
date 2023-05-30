@@ -87,4 +87,4 @@ stages:
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
           - task: CmdLine@2
             inputs:
-              script: 'python manage.py runserver'
+              script: ls
