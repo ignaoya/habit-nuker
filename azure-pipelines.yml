@@ -57,7 +57,7 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     artifactName: 'Application$(Build.BuildId).zip'
-    downloadPath: '$(System.ArtifactsDirectory)'
+    downloadPath: '$(System.ArtifactsDirectory)/drop/'
 - task: AzureWebApp@1
   displayName: 'Deploy Azure Web App : habit-nuker-django'
   inputs:
