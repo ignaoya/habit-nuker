@@ -54,6 +54,20 @@ steps:
     testRunTitle: 'Python $(PYTHON_VERSION)'
   condition: succeededOrFailed()
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure subscription 1(44ca54b6-ec71-4366-a0e2-63e08d0b10d6)'
