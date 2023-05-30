@@ -59,7 +59,7 @@ steps:
     azureSubscription: 'Azure subscription 1(44ca54b6-ec71-4366-a0e2-63e08d0b10d6)'
     appType: 'webAppLinux'
     appName: 'habit-nuker-django'
-    package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+    package: $(Pipeline.Workspace)/drop/Application$(Build.BuildId).zip
     deploymentMethod: zipDeploy
 
     # The following parameter is specific to the Flask example code. You may
