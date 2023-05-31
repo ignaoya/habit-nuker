@@ -86,5 +86,6 @@ stages:
               appName: $(webAppName)
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
 
-          - script: cd $(Build.BuildId)
-                    python manage.py runserver
+          - script: |
+              cd $(Build.BuildId)
+              python manage.py runserver
